@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10ROW</title>
+    <meta name="description" content="10ROW is an independent product studio building and operating focused software businesses.">
+    <meta property="og:title" content="10ROW">
+    <meta property="og:description" content="An independent product studio for focused software products, applied AI, and operating systems.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#050608">
+    <link rel="icon" type="image/svg+xml" href="assets/10row-mark.svg">
+    <style>
+      :root {
+        color-scheme: dark;
+        --black: #050608;
+        --black-2: #090b0f;
+        --ink: #f7f4ec;
+        --muted: #9aa1aa;
+        --dim: #666e78;
+        --line: rgba(247, 244, 236, 0.16);
+        --line-strong: rgba(247, 244, 236, 0.34);
+        --red: #d93f35;
+        --cyan: #7ad5ff;
+        --green: #9ac59d;
+        --gold: #d2b26d;
+        --panel: rgba(255, 255, 255, 0.055);
+        --shadow: 0 30px 80px rgba(0, 0, 0, 0.48);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--black);
+        color: var(--ink);
+        font-family: "Aptos", "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.5;
+        scroll-behavior: smooth;
+        text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 96px 96px;
+        content: "";
+        inset: 0;
+        opacity: 0.34;
+        pointer-events: none;
+        position: fixed;
+        z-index: -2;
+      }
+
+      body::after {
+        background:
+          radial-gradient(circle at 80% 8%, rgba(122, 213, 255, 0.12), transparent 28%),
+          radial-gradient(circle at 14% 70%, rgba(217, 63, 53, 0.11), transparent 24%),
+          linear-gradient(180deg, transparent 0%, rgba(5, 6, 8, 0.8) 58%, var(--black) 100%);
+        content: "";
+        inset: 0;
+        pointer-events: none;
+        position: fixed;
+        z-index: -1;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .site-header {
+        align-items: center;
+        background: linear-gradient(180deg, rgba(5, 6, 8, 0.92), rgba(5, 6, 8, 0.62));
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 28px;
+        justify-content: space-between;
+        left: 0;
+        padding: 18px clamp(20px, 5vw, 72px);
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 20;
+      }
+
+      .wordmark {
+        align-items: center;
+        display: inline-flex;
+        gap: 14px;
+        min-height: 36px;
+        text-decoration: none;
+      }
+
+      .wordmark svg {
+        display: block;
+        height: auto;
+        width: 132px;
+      }
+
+      .wordmark .mark-line {
+        transform-origin: center;
+      }
+
+      .site-nav {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+      }
+
+      .site-nav a,
+      .nav-button {
+        background: transparent;
+        border: 0;
+        color: rgba(247, 244, 236, 0.78);
+        font-size: 0.78rem;
+        font-weight: 760;
+        letter-spacing: 0.12em;
+        line-height: 1;
+        padding: 10px 0;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .site-nav a:hover,
+      .nav-button:hover {
+        color: var(--ink);
+      }
+
+      .nav-button {
+        border-bottom: 1px solid var(--red);
+      }
+
+      .hero {
+        align-items: end;
+        display: flex;
+        min-height: 91vh;
+        overflow: hidden;
+        padding: 124px clamp(20px, 5vw, 72px) 52px;
+        position: relative;
+      }
+
+      .hero-canvas {
+        height: 100%;
+        inset: 0;
+        opacity: 0.95;
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+      }
+
+      .hero::after {
+        background:
+          linear-gradient(90deg, rgba(5, 6, 8, 0.94) 0%, rgba(5, 6, 8, 0.76) 42%, rgba(5, 6, 8, 0.18) 100%),
+          linear-gradient(180deg, transparent 0%, rgba(5, 6, 8, 0.22) 70%, var(--black) 100%);
+        content: "";
+        inset: 0;
+        pointer-events: none;
+        position: absolute;
+      }
+
+      .hero-inner {
+        max-width: 920px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .kicker {
+        align-items: center;
+        color: rgba(247, 244, 236, 0.72);
+        display: inline-flex;
+        font-size: 0.76rem;
+        font-weight: 790;
+        gap: 12px;
+        letter-spacing: 0.18em;
+        margin: 0 0 22px;
+        text-transform: uppercase;
+      }
+
+      .kicker::before {
+        background: var(--red);
+        content: "";
+        display: inline-block;
+        height: 2px;
+        width: 54px;
+      }
+
+      .hero-logo-title {
+        margin: 0;
+        width: min(100%, 700px);
+      }
+
+      .hero-wordmark {
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+
+      .hero-copy {
+        color: rgba(247, 244, 236, 0.82);
+        font-size: clamp(1.1rem, 2vw, 1.65rem);
+        line-height: 1.34;
+        margin: 32px 0 0;
+        max-width: 690px;
+      }
+
+      .hero-actions {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 38px;
+      }
+
+      .button {
+        align-items: center;
+        background: var(--ink);
+        border: 1px solid var(--ink);
+        color: var(--black);
+        display: inline-flex;
+        font-size: 0.78rem;
+        font-weight: 840;
+        gap: 12px;
+        justify-content: center;
+        letter-spacing: 0.12em;
+        min-height: 48px;
+        min-width: 190px;
+        padding: 0 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button.secondary {
+        background: transparent;
+        border-color: var(--line-strong);
+        color: var(--ink);
+      }
+
+      .button.secondary:hover {
+        border-color: var(--ink);
+      }
+
+      .button .arrow {
+        display: inline-block;
+        font-size: 1.1rem;
+        line-height: 1;
+        transform: translateY(-1px);
+      }
+
+      .mission-strip {
+        border-bottom: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        position: relative;
+        z-index: 2;
+      }
+
+      .mission-cell {
+        border-right: 1px solid var(--line);
+        min-height: 118px;
+        padding: 24px clamp(20px, 5vw, 42px);
+      }
+
+      .mission-cell:last-child {
+        border-right: 0;
+      }
+
+      .mission-cell span {
+        color: var(--dim);
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 780;
+        letter-spacing: 0.14em;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+      }
+
+      .mission-cell strong {
+        color: var(--ink);
+        display: block;
+        font-size: clamp(1.18rem, 2vw, 1.85rem);
+        line-height: 1.1;
+      }
+
+      .section {
+        padding: 86px clamp(20px, 5vw, 72px);
+      }
+
+      .section-inner {
+        margin: 0 auto;
+        max-width: 1240px;
+      }
+
+      .section-head {
+        align-items: end;
+        display: grid;
+        gap: 28px;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+        margin-bottom: 54px;
+      }
+
+      h2 {
+        font-size: clamp(2.6rem, 6vw, 6.7rem);
+        font-weight: 890;
+        letter-spacing: 0;
+        line-height: 0.92;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        margin: 0;
+        max-width: 720px;
+      }
+
+      .systems {
+        border-top: 1px solid var(--line);
+      }
+
+      .system-row {
+        align-items: center;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 0.55fr 1.2fr auto;
+        min-height: 122px;
+        padding: 28px 0;
+      }
+
+      .system-row h3 {
+        font-size: clamp(1.2rem, 2vw, 2rem);
+        letter-spacing: 0;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      .system-row p {
+        color: var(--muted);
+        margin: 0;
+        max-width: 650px;
+      }
+
+      .system-code {
+        color: var(--dim);
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 0.8rem;
+        justify-self: end;
+        letter-spacing: 0.08em;
+      }
+
+      .dark-band {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018)),
+          var(--black-2);
+        border-bottom: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+      }
+
+      .focus-layout {
+        display: grid;
+        gap: 46px;
+        grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.25fr);
+      }
+
+      .focus-visual {
+        aspect-ratio: 1 / 1;
+        border: 1px solid var(--line);
+        min-height: 340px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .focus-visual::before {
+        background:
+          linear-gradient(90deg, transparent 0 18%, rgba(247, 244, 236, 0.12) 18% 18.35%, transparent 18.35% 100%),
+          linear-gradient(0deg, transparent 0 18%, rgba(247, 244, 236, 0.12) 18% 18.35%, transparent 18.35% 100%);
+        background-size: 74px 74px;
+        content: "";
+        inset: -30px;
+        position: absolute;
+        transform: perspective(680px) rotateX(62deg) translateY(120px);
+      }
+
+      .focus-visual::after {
+        background: linear-gradient(110deg, transparent 0 28%, rgba(217, 63, 53, 0.92) 28% 31%, transparent 31% 100%);
+        content: "";
+        inset: 0;
+        mix-blend-mode: screen;
+        position: absolute;
+      }
+
+      .orbit {
+        border: 1px solid rgba(247, 244, 236, 0.28);
+        border-radius: 999px;
+        height: 70%;
+        left: 15%;
+        position: absolute;
+        top: 18%;
+        transform: rotate(-18deg);
+        width: 70%;
+      }
+
+      .orbit:nth-child(2) {
+        border-color: rgba(122, 213, 255, 0.26);
+        height: 48%;
+        left: 26%;
+        top: 28%;
+        transform: rotate(34deg);
+        width: 48%;
+      }
+
+      .focus-list {
+        border-top: 1px solid var(--line);
+      }
+
+      .focus-item {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 170px minmax(0, 1fr);
+        padding: 28px 0;
+      }
+
+      .focus-item strong {
+        color: var(--ink);
+        font-size: 1rem;
+        text-transform: uppercase;
+      }
+
+      .focus-item span {
+        color: var(--muted);
+      }
+
+      .contact-layout {
+        display: grid;
+        gap: 42px;
+        grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 1.2fr);
+      }
+
+      .contact-panel {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        padding: clamp(22px, 4vw, 38px);
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 18px;
+      }
+
+      .field-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      label {
+        color: rgba(247, 244, 236, 0.76);
+        display: grid;
+        font-size: 0.76rem;
+        font-weight: 780;
+        gap: 8px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      input,
+      textarea,
+      select {
+        background: rgba(5, 6, 8, 0.76);
+        border: 1px solid var(--line);
+        border-radius: 0;
+        color: var(--ink);
+        min-height: 52px;
+        outline: none;
+        padding: 14px 15px;
+        width: 100%;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: rgba(122, 213, 255, 0.7);
+        box-shadow: 0 0 0 3px rgba(122, 213, 255, 0.12);
+      }
+
+      .form-status {
+        color: var(--muted);
+        font-size: 0.92rem;
+        min-height: 24px;
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        color: var(--dim);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 28px;
+        justify-content: space-between;
+        padding: 28px clamp(20px, 5vw, 72px);
+      }
+
+      .drawer {
+        align-items: stretch;
+        background: rgba(5, 6, 8, 0.76);
+        display: none;
+        inset: 0;
+        justify-content: end;
+        position: fixed;
+        z-index: 80;
+      }
+
+      .drawer.open {
+        display: flex;
+      }
+
+      .drawer-panel {
+        background: var(--black);
+        border-left: 1px solid var(--line-strong);
+        box-shadow: var(--shadow);
+        max-width: 620px;
+        overflow-y: auto;
+        padding: 28px;
+        width: min(100%, 620px);
+      }
+
+      .drawer-head {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 34px;
+      }
+
+      .icon-button {
+        align-items: center;
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--ink);
+        display: inline-flex;
+        height: 44px;
+        justify-content: center;
+        width: 44px;
+      }
+
+      .icon-button:hover {
+        border-color: var(--ink);
+      }
+
+      .close-icon {
+        display: block;
+        height: 18px;
+        position: relative;
+        width: 18px;
+      }
+
+      .close-icon::before,
+      .close-icon::after {
+        background: currentColor;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        top: 8px;
+        width: 18px;
+      }
+
+      .close-icon::before {
+        transform: rotate(45deg);
+      }
+
+      .close-icon::after {
+        transform: rotate(-45deg);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 700ms ease, transform 700ms ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 920px) {
+        .site-header {
+          padding: 16px 20px;
+        }
+
+        .wordmark svg {
+          width: 124px;
+        }
+
+        .site-nav {
+          gap: 16px;
+        }
+
+        .site-nav a:first-child {
+          display: none;
+        }
+
+        .hero {
+          min-height: 88vh;
+          padding: 108px 20px 46px;
+        }
+
+        .hero-logo-title {
+          width: min(100%, 520px);
+        }
+
+        .mission-strip,
+        .section-head,
+        .focus-layout,
+        .contact-layout,
+        .field-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .mission-cell {
+          border-bottom: 1px solid var(--line);
+          border-right: 0;
+          min-height: 96px;
+        }
+
+        .mission-cell:last-child {
+          border-bottom: 0;
+        }
+
+        .section {
+          padding: 64px 20px;
+        }
+
+        .system-row {
+          align-items: start;
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+
+        .system-code {
+          justify-self: start;
+        }
+
+        .focus-item {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 540px) {
+        .site-nav a {
+          display: none;
+        }
+
+        .nav-button {
+          font-size: 0.72rem;
+        }
+
+        .hero-actions .button {
+          width: 100%;
+        }
+
+        .drawer-panel {
+          padding: 22px 20px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .reveal,
+        .button {
+          transition: none;
+        }
+
+        .hero-canvas {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg aria-hidden="true" style="height:0;position:absolute;width:0;">
+      <symbol id="logo-10row" viewBox="0 0 257 60">
+        <path d="M8 50V10h14v40H8ZM0 24V10h22v14H0Z" fill="#f7f4ec"></path>
+        <path fill-rule="evenodd" d="M40 10h31l13 13v14L71 50H40L27 37V23L40 10Zm5 13-6 6v2l6 6h21l6-6v-2l-6-6H45Z" fill="#f7f4ec"></path>
+        <path fill-rule="evenodd" d="M88 10h43l12 12v11l-8 8 12 9h-22l-9-7h-13v7H88V10Zm15 13v9h22l5-4v-1l-5-4h-22Z" fill="#f7f4ec"></path>
+        <path fill-rule="evenodd" d="M151 10h30l13 13v14l-13 13h-30l-13-13V23l13-13Zm5 13-6 6v2l6 6h20l6-6v-2l-6-6h-20Z" fill="#f7f4ec"></path>
+        <path d="M188 10h13l7 25 9-25h12l9 25 7-25h12l-12 40h-14l-9-22-9 22h-14l-11-40Z" fill="#f7f4ec"></path>
+        <path class="mark-line" d="M88 56h169v3H88z" fill="#d93f35"></path>
+      </symbol>
+    </svg>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="wordmark" href="#top" aria-label="10ROW home">
+        <svg viewBox="0 0 257 60" role="img" aria-label="10ROW">
+          <use href="#logo-10row"></use>
+        </svg>
+      </a>
+      <nav class="site-nav" aria-label="Site navigation">
+        <a href="#systems">Systems</a>
+        <a href="#focus">Focus</a>
+        <button class="nav-button" type="button" data-open-contact>Contact</button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="10ROW overview">
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero-inner">
+          <p class="kicker">Independent product studio</p>
+          <h1 class="hero-logo-title" aria-label="10ROW">
+            <svg class="hero-wordmark" viewBox="0 0 257 60" role="img" aria-label="10ROW">
+              <use href="#logo-10row"></use>
+            </svg>
+          </h1>
+          <p class="hero-copy">10ROW builds, launches, and operates focused software products across applied AI, consumer internet, and internal operating systems.</p>
+          <div class="hero-actions">
+            <button class="button" type="button" data-open-contact>
+              Start a conversation <span class="arrow" aria-hidden="true">></span>
+            </button>
+            <a class="button secondary" href="#focus">View focus</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mission-strip" aria-label="Operating summary">
+        <div class="mission-cell">
+          <span>Mode</span>
+          <strong>Build</strong>
+        </div>
+        <div class="mission-cell">
+          <span>Surface</span>
+          <strong>Software</strong>
+        </div>
+        <div class="mission-cell">
+          <span>Vector</span>
+          <strong>Applied AI</strong>
+        </div>
+        <div class="mission-cell">
+          <span>Base</span>
+          <strong>Operations</strong>
+        </div>
+      </section>
+
+      <section class="section" id="systems">
+        <div class="section-inner">
+          <div class="section-head reveal">
+            <h2>Launch systems.</h2>
+            <p class="lead">A small studio should still feel operationally precise. 10ROW exists for the unglamorous work that makes software brands real: product direction, vendor setup, support paths, infrastructure, and launch discipline.</p>
+          </div>
+          <div class="systems">
+            <article class="system-row reveal">
+              <h3>Product</h3>
+              <p>Concept shaping, prototype loops, product packaging, and launch readiness for focused software products.</p>
+              <span class="system-code">SYS-01</span>
+            </article>
+            <article class="system-row reveal">
+              <h3>Operations</h3>
+              <p>Domains, email, documentation, payment readiness, vendor correspondence, and account administration.</p>
+              <span class="system-code">SYS-02</span>
+            </article>
+            <article class="system-row reveal">
+              <h3>Infrastructure</h3>
+              <p>Practical systems for internal tools, support workflows, software delivery, and recurring product maintenance.</p>
+              <span class="system-code">SYS-03</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark-band" id="focus">
+        <div class="section-inner focus-layout">
+          <div class="focus-visual reveal" aria-hidden="true">
+            <span class="orbit"></span>
+            <span class="orbit"></span>
+          </div>
+          <div>
+            <div class="section-head reveal" style="display:block;margin-bottom:34px;">
+              <p class="kicker">Current focus</p>
+              <h2>Focused brands. Real operations.</h2>
+            </div>
+            <div class="focus-list">
+              <div class="focus-item reveal">
+                <strong>WhisperGrey</strong>
+                <span>AI character and digital subscription software.</span>
+              </div>
+              <div class="focus-item reveal">
+                <strong>Internal tools</strong>
+                <span>Admin workflows, product operations, and launch systems that reduce friction.</span>
+              </div>
+              <div class="focus-item reveal">
+                <strong>Platform work</strong>
+                <span>Infrastructure and support paths for software products that need to look ready before they scale.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-inner contact-layout">
+          <div class="reveal">
+            <p class="kicker">Contact</p>
+            <h2>Send signal.</h2>
+            <p class="lead">For vendor, partner, and administrative correspondence, use the form. It routes to 10ROW operations without opening a local email client.</p>
+          </div>
+          <div class="contact-panel reveal">
+            <form class="contact-form" data-contact-form action="https://formsubmit.co/ajax/hello@10row.com" method="POST">
+              <input type="hidden" name="_subject" value="10ROW website inquiry">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_url" value="https://10row.com">
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+              <div class="field-grid">
+                <label>
+                  Name
+                  <input name="name" autocomplete="name" required>
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" autocomplete="email" required>
+                </label>
+              </div>
+              <label>
+                Topic
+                <select name="topic" required>
+                  <option value="">Select one</option>
+                  <option>Vendor or admin correspondence</option>
+                  <option>Product or partnership inquiry</option>
+                  <option>Support or operations</option>
+                </select>
+              </label>
+              <label>
+                Message
+                <textarea name="message" required></textarea>
+              </label>
+              <button class="button" type="submit">Send message <span class="arrow" aria-hidden="true">></span></button>
+              <div class="form-status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>10ROW</span>
+      <span>Independent software project operations.</span>
+      <span>hello@10row.com</span>
+    </footer>
+
+    <div class="drawer" data-contact-drawer aria-hidden="true">
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+        <div class="drawer-head">
+          <div>
+            <p class="kicker" style="margin:0 0 8px;">Contact</p>
+            <h2 id="drawerTitle" style="font-size:clamp(2.6rem,7vw,4.8rem);">Open line.</h2>
+          </div>
+          <button class="icon-button" type="button" data-close-contact aria-label="Close contact form">
+            <span class="close-icon" aria-hidden="true"></span>
+          </button>
+        </div>
+        <form class="contact-form" data-contact-form action="https://formsubmit.co/ajax/hello@10row.com" method="POST">
+          <input type="hidden" name="_subject" value="10ROW website inquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_url" value="https://10row.com">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+          <div class="field-grid">
+            <label>
+              Name
+              <input name="name" autocomplete="name" required>
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required>
+            </label>
+          </div>
+          <label>
+            Topic
+            <select name="topic" required>
+              <option value="">Select one</option>
+              <option>Vendor or admin correspondence</option>
+              <option>Product or partnership inquiry</option>
+              <option>Support or operations</option>
+            </select>
+          </label>
+          <label>
+            Message
+            <textarea name="message" required></textarea>
+          </label>
+          <button class="button" type="submit">Send message <span class="arrow" aria-hidden="true">></span></button>
+          <div class="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const canvas = document.getElementById("heroCanvas");
+        const ctx = canvas.getContext("2d");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let frame = 0;
+
+        const resize = () => {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          width = canvas.clientWidth;
+          height = canvas.clientHeight;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const drawField = () => {
+          frame += 1;
+          ctx.clearRect(0, 0, width, height);
+          ctx.fillStyle = "#050608";
+          ctx.fillRect(0, 0, width, height);
+
+          const horizon = height * 0.64;
+          ctx.strokeStyle = "rgba(247,244,236,0.15)";
+          ctx.lineWidth = 1;
+          for (let i = 0; i < 22; i += 1) {
+            const y = horizon + i * i * 1.45;
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+          }
+
+          const vanishingX = width * 0.72 + Math.sin(frame * 0.006) * 26;
+          for (let i = -12; i <= 18; i += 1) {
+            const x = i * width * 0.09;
+            ctx.beginPath();
+            ctx.moveTo(vanishingX, horizon);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+          }
+
+          const blocks = [
+            [0.64, 0.19, 0.18, "#7ad5ff"],
+            [0.74, 0.36, 0.09, "#d93f35"],
+            [0.54, 0.52, 0.24, "#9ac59d"],
+            [0.43, 0.68, 0.34, "#f7f4ec"]
+          ];
+          blocks.forEach(([x, y, w, color], index) => {
+            const drift = Math.sin(frame * 0.01 + index) * 12;
+            ctx.fillStyle = color === "#f7f4ec" ? "rgba(247,244,236,0.22)" : `${color}66`;
+            ctx.fillRect(width * x + drift, height * y, width * w, 7 + index * 2);
+          });
+
+          ctx.strokeStyle = "rgba(217,63,53,0.72)";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(width * 0.53, height * 0.09);
+          ctx.lineTo(width * 0.87, height * 0.5);
+          ctx.stroke();
+
+          ctx.fillStyle = "rgba(247,244,236,0.58)";
+          for (let i = 0; i < 80; i += 1) {
+            const x = (i * 97 + frame * 0.09) % width;
+            const y = (i * 53) % Math.max(1, height * 0.56);
+            const alpha = 0.16 + ((i % 7) / 18);
+            ctx.globalAlpha = alpha;
+            ctx.fillRect(x, y, 1.2, 1.2);
+          }
+          ctx.globalAlpha = 1;
+        };
+
+        const tick = () => {
+          if (!reducedMotion) {
+            drawField();
+            requestAnimationFrame(tick);
+          } else {
+            drawField();
+          }
+        };
+
+        window.addEventListener("resize", resize);
+        resize();
+        tick();
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.18 });
+        document.querySelectorAll(".reveal").forEach((node) => observer.observe(node));
+
+        const drawer = document.querySelector("[data-contact-drawer]");
+        const openers = document.querySelectorAll("[data-open-contact]");
+        const closer = document.querySelector("[data-close-contact]");
+        const firstDrawerInput = drawer.querySelector("input[name='name']");
+
+        const openDrawer = () => {
+          drawer.classList.add("open");
+          drawer.setAttribute("aria-hidden", "false");
+          document.body.style.overflow = "hidden";
+          setTimeout(() => firstDrawerInput.focus(), 50);
+        };
+
+        const closeDrawer = () => {
+          drawer.classList.remove("open");
+          drawer.setAttribute("aria-hidden", "true");
+          document.body.style.overflow = "";
+        };
+
+        openers.forEach((button) => button.addEventListener("click", openDrawer));
+        closer.addEventListener("click", closeDrawer);
+        drawer.addEventListener("click", (event) => {
+          if (event.target === drawer) closeDrawer();
+        });
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
+        });
+
+        document.querySelectorAll("[data-contact-form]").forEach((form) => {
+          const status = form.querySelector(".form-status");
+          form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            status.textContent = "Sending...";
+            const button = form.querySelector("button[type='submit']");
+            button.disabled = true;
+            try {
+              const response = await fetch(form.action, {
+                method: "POST",
+                body: new FormData(form),
+                headers: { "Accept": "application/json" }
+              });
+              if (!response.ok) throw new Error("Send failed");
+              form.reset();
+              status.textContent = "Message sent. 10ROW operations will reply from hello@10row.com.";
+            } catch (error) {
+              status.textContent = "The form is ready, but the live endpoint needs activation after deploy.";
+            } finally {
+              button.disabled = false;
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

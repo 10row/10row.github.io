@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 257 60" role="img" aria-label="10ROW">
+  <rect width="257" height="60" fill="#050608"/>
+  <path d="M8 50V10h14v40H8ZM0 24V10h22v14H0Z" fill="#f7f4ec"/>
+  <path fill-rule="evenodd" d="M40 10h31l13 13v14L71 50H40L27 37V23L40 10Zm5 13-6 6v2l6 6h21l6-6v-2l-6-6H45Z" fill="#f7f4ec"/>
+  <path fill-rule="evenodd" d="M88 10h43l12 12v11l-8 8 12 9h-22l-9-7h-13v7H88V10Zm15 13v9h22l5-4v-1l-5-4h-22Z" fill="#f7f4ec"/>
+  <path fill-rule="evenodd" d="M151 10h30l13 13v14l-13 13h-30l-13-13V23l13-13Zm5 13-6 6v2l6 6h20l6-6v-2l-6-6h-20Z" fill="#f7f4ec"/>
+  <path d="M188 10h13l7 25 9-25h12l9 25 7-25h12l-12 40h-14l-9-22-9 22h-14l-11-40Z" fill="#f7f4ec"/>
+  <path d="M88 56h169v3H88z" fill="#d93f35"/>
+</svg>
